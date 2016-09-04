@@ -33,7 +33,7 @@ module.exports = {
   bail: true,
   // We generate sourcemaps in production. This is slow but gives good results.
   // You can exclude the *.map files from the build during deployment.
-  devtool: 'source-map',
+  //devtool: 'source-map',
   // In production, we only want to load the polyfills and the app code.
   entry: [
     require.resolve('./polyfills'),
@@ -46,7 +46,7 @@ module.exports = {
     // There will be one main bundle, and one file per asynchronous chunk.
     // We don't currently advertise code splitting but Webpack supports it.
     filename: 'static/js/[name].[chunkhash:8].js',
-    chunkFilename: 'static/js/[name].[chunkhash:8].chunk.js',
+    //chunkFilename: 'static/js/[name].[chunkhash:8].chunk.js',
     // We inferred the "public path" (such as / or /my-project) from homepage.
     publicPath: publicPath
   },
@@ -105,63 +105,63 @@ module.exports = {
       // tags. If you use code splitting, however, any async bundles will still
       // use the "style" loader inside the async code so CSS from them won't be
       // in the main CSS file.
-      {
-        test: /\.css$/,
-        // "?-autoprefixer" disables autoprefixer in css-loader itself:
-        // https://github.com/webpack/css-loader/issues/281
-        // We already have it thanks to postcss. We only pass this flag in
-        // production because "css" loader only enables autoprefixer-powered
-        // removal of unnecessary prefixes when Uglify plugin is enabled.
-        // Webpack 1.x uses Uglify plugin as a signal to minify *all* the assets
-        // including CSS. This is confusing and will be removed in Webpack 2:
-        // https://github.com/webpack/webpack/issues/283
-        loader: ExtractTextPlugin.extract('style', 'css?-autoprefixer!postcss')
-        // Note: this won't work without `new ExtractTextPlugin()` in `plugins`.
-      },
+      // {
+      //   test: /\.css$/,
+      //   // "?-autoprefixer" disables autoprefixer in css-loader itself:
+      //   // https://github.com/webpack/css-loader/issues/281
+      //   // We already have it thanks to postcss. We only pass this flag in
+      //   // production because "css" loader only enables autoprefixer-powered
+      //   // removal of unnecessary prefixes when Uglify plugin is enabled.
+      //   // Webpack 1.x uses Uglify plugin as a signal to minify *all* the assets
+      //   // including CSS. This is confusing and will be removed in Webpack 2:
+      //   // https://github.com/webpack/webpack/issues/283
+      //   loader: ExtractTextPlugin.extract('style', 'css?-autoprefixer!postcss')
+      //   // Note: this won't work without `new ExtractTextPlugin()` in `plugins`.
+      // },
       // JSON is not enabled by default in Webpack but both Node and Browserify
       // allow it implicitly so we also enable it.
       {
         test: /\.json$/,
         loader: 'json'
       },
-      // "file" loader makes sure those assets end up in the `build` folder.
-      // When you `import` an asset, you get its filename.
-      {
-        test: /\.(ico|jpg|png|gif|eot|otf|webp|svg|ttf|woff|woff2)(\?.*)?$/,
-        exclude: /\/favicon.ico$/,
-        loader: 'file',
-        query: {
-          name: 'static/media/[name].[hash:8].[ext]'
-        }
-      },
-      // A special case for favicon.ico to place it into build root directory.
-      {
-        test: /\/favicon.ico$/,
-        include: [paths.appSrc],
-        loader: 'file',
-        query: {
-          name: 'favicon.ico?[hash:8]'
-        }
-      },
-      // "url" loader works just like "file" loader but it also embeds
-      // assets smaller than specified size as data URLs to avoid requests.
-      {
-        test: /\.(mp4|webm)(\?.*)?$/,
-        loader: 'url',
-        query: {
-          limit: 10000,
-          name: 'static/media/[name].[hash:8].[ext]'
-        }
-      },
-      // "html" loader is used to process template page (index.html) to resolve
-      // resources linked with <link href="./relative/path"> HTML tags.
-      {
-        test: /\.html$/,
-        loader: 'html',
-        query: {
-          attrs: ['link:href'],
-        }
-      }
+      // // "file" loader makes sure those assets end up in the `build` folder.
+      // // When you `import` an asset, you get its filename.
+      // {
+      //   test: /\.(ico|jpg|png|gif|eot|otf|webp|svg|ttf|woff|woff2)(\?.*)?$/,
+      //   exclude: /\/favicon.ico$/,
+      //   loader: 'file',
+      //   query: {
+      //     name: 'static/media/[name].[hash:8].[ext]'
+      //   }
+      // },
+      // // A special case for favicon.ico to place it into build root directory.
+      // {
+      //   test: /\/favicon.ico$/,
+      //   include: [paths.appSrc],
+      //   loader: 'file',
+      //   query: {
+      //     name: 'favicon.ico?[hash:8]'
+      //   }
+      // },
+      // // "url" loader works just like "file" loader but it also embeds
+      // // assets smaller than specified size as data URLs to avoid requests.
+      // {
+      //   test: /\.(mp4|webm)(\?.*)?$/,
+      //   loader: 'url',
+      //   query: {
+      //     limit: 10000,
+      //     name: 'static/media/[name].[hash:8].[ext]'
+      //   }
+      // },
+      // // "html" loader is used to process template page (index.html) to resolve
+      // // resources linked with <link href="./relative/path"> HTML tags.
+      // {
+      //   test: /\.html$/,
+      //   loader: 'html',
+      //   query: {
+      //     attrs: ['link:href'],
+      //   }
+      // }
     ]
   },
   // Point ESLint to our predefined config.
@@ -172,36 +172,36 @@ module.exports = {
     useEslintrc: false
   },
   // We use PostCSS for autoprefixing only.
-  postcss: function() {
-    return [
-      autoprefixer({
-        browsers: [
-          '>1%',
-          'last 4 versions',
-          'Firefox ESR',
-          'not ie < 9', // React doesn't support IE8 anyway
-        ]
-      }),
-    ];
-  },
+  // postcss: function() {
+  //   return [
+  //     autoprefixer({
+  //       browsers: [
+  //         '>1%',
+  //         'last 4 versions',
+  //         'Firefox ESR',
+  //         'not ie < 9', // React doesn't support IE8 anyway
+  //       ]
+  //     }),
+  //   ];
+  // },
   plugins: [
     // Generates an `index.html` file with the <script> injected.
-    new HtmlWebpackPlugin({
-      inject: true,
-      template: paths.appHtml,
-      minify: {
-        removeComments: true,
-        collapseWhitespace: true,
-        removeRedundantAttributes: true,
-        useShortDoctype: true,
-        removeEmptyAttributes: true,
-        removeStyleLinkTypeAttributes: true,
-        keepClosingSlash: true,
-        minifyJS: true,
-        minifyCSS: true,
-        minifyURLs: true
-      }
-    }),
+    // new HtmlWebpackPlugin({
+    //   inject: true,
+    //   template: paths.appHtml,
+    //   minify: {
+    //     removeComments: true,
+    //     collapseWhitespace: true,
+    //     removeRedundantAttributes: true,
+    //     useShortDoctype: true,
+    //     removeEmptyAttributes: true,
+    //     removeStyleLinkTypeAttributes: true,
+    //     keepClosingSlash: true,
+    //     minifyJS: true,
+    //     minifyCSS: true,
+    //     minifyURLs: true
+    //   }
+    // }),
     // Makes some environment variables available to the JS code, for example:
     // if (process.env.NODE_ENV === 'production') { ... }. See `env.js`.
     // It is absolutely essential that NODE_ENV was set to production here.
@@ -226,6 +226,6 @@ module.exports = {
       }
     }),
     // Note: this won't work without ExtractTextPlugin.extract(..) in `loaders`.
-    new ExtractTextPlugin('static/css/[name].[contenthash:8].css')
+    //new ExtractTextPlugin('static/css/[name].[contenthash:8].css')
   ]
 };
