@@ -1,6 +1,6 @@
 [![Build Status](https://travis-ci.org/staticinstance/react-component-module.svg?branch=master)](https://travis-ci.org/staticinstance/react-component-module)
 
-This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
+This is a bootstrap project for using modular react components via npm
 
 ### usage
 ```npm install --save react-component-module```
