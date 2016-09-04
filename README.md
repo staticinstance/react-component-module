@@ -4,6 +4,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 npm install --save react-component-module
 
 ### use case
+```
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from 'react-component-module'
@@ -12,3 +13,4 @@ ReactDOM.render(
   <App />,
   document.getElementById('root')
 );
+```
