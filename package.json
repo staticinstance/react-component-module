@@ -84,5 +84,10 @@
     ],
     "testEnvironment": "node",
     "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(js|jsx)$"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/staticinstance/react-component-module.git"
+  },
+  "homepage": "https://github.com/staticinstance/react-component-module.git#readme"
 }
