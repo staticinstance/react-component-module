@@ -16,13 +16,15 @@ var nodePaths = (process.env.NODE_PATH || '')
   .filter(Boolean)
   .map(p => path.resolve(p));
 
+//get parent path
+var parent_path = path.dirname(module.parent.filename);
 function resolveApp(relativePath) {
   return path.resolve(relativePath);
 }
 
 // config after eject: we're in ./config/
 module.exports = {
-  appBuild: resolveApp('build'),
+  appBuild: path.resolve(path.join(parent_path, '../')),
   appHtml: resolveApp('index.html'),
   appPackageJson: resolveApp('package.json'),
   appSrc: resolveApp('src'),
