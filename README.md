@@ -1,6 +1,4 @@
-
-
-### This is a bootstrap project for using modular react components via npm
+This is a bootstrap project for using modular react components via npm
 
 [![Build Status](https://travis-ci.org/staticinstance/react-component-module.svg?branch=master)](https://travis-ci.org/staticinstance/react-component-module)
 
