@@ -1,7 +1,7 @@
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
 ### usage
-npm install --save react-component-module
+```npm install --save react-component-module```
 
 ### use case
 ```
